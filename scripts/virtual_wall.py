@@ -189,11 +189,11 @@ class VirtualWall(object):
 		 			new_map.data = self.reshape_tuple_map[j]
 		 			rospy.sleep(2)
 		 			self.pub.publish(new_map)
-		 			rospy.sleep(5)
+		 			rospy.sleep(2.5)
 
 		 		if (j == 1):
 		 			self.pub.publish(self.map_no_walls)
-		 			rospy.sleep(1)
+		 			rospy.sleep(1.5)
 		 		# Define and publish goal pose for global planner.
 		 		goal_pub = PoseStamped()
 		 		goal_pub.header.stamp = rospy.Time.now()
