@@ -81,7 +81,7 @@ class PurePursuit(object):
 			#startna ravnina
 			print ("ciljna ravnina")
 			self.ld = 1.5
-			self.v = 8.5
+			self.v = 2
 			self.turn = 1
 			self.count_dooke = 0
 			self.cnt = 0
@@ -488,7 +488,7 @@ class PurePursuit(object):
 
 	def __init__(self):
 		"""Create subscribers, publishers and servers."""
-		self.circle_of_life = numpy.array([7, 5.6, 3.5, 5.5, 4.0, 6.8, 5.2, 5.3, 3.5, 3.5, 3.5, 3.6, 4.0, 4.0])
+		self.circle_of_life = numpy.array([8, 5.6, 3.5, 5.5, 4.0, 6.8, 5.2, 5.3, 3.5, 3.5, 3.5, 3.6, 4.0, 4.0])
 		self.count_dooke = 0
 		self.flag = 0
 		self.zastavica = 1
