@@ -503,11 +503,11 @@ class PurePursuit(object):
 
 
 		srv = Server(RacecarConfig, self.config_callback)
-		rospy.Subscriber("/odom", Odometry, self.odometry_callback, queue_size = 1)
+		rospy.Subscriber("fer_rari/odom", Odometry, self.odometry_callback, queue_size = 1)
 		rospy.Subscriber("/cmd_vel", Twist, self.cmd_callback, queue_size = 1)
 		rospy.Subscriber("/map_type", Int64, self.maptype_callback, queue_size = 1)
 		rospy.Subscriber("/move_base/TebLocalPlannerROS/local_plan", Path, self.planner_callback, queue_size = 1)
-		self.pub = rospy.Publisher("/drive", AckermannDriveStamped, queue_size = 1)
+		self.pub = rospy.Publisher("fer_rari/drive", AckermannDriveStamped, queue_size = 1)
 		rospy.sleep(0.5) 
 		self.pub2 = rospy.Publisher("/pure_pursit_goal", PointStamped, queue_size = 1)
 		self.transf = tf.TransformListener()

@@ -152,7 +152,7 @@ class VirtualWall(object):
 
 
 		# Create subscribers.
-		rospy.Subscriber("/odom", Odometry,self.odometry_callback, queue_size = 1)
+		rospy.Subscriber("fer_rari/odom", Odometry,self.odometry_callback, queue_size = 1)
 		rospy.Subscriber("/map", OccupancyGrid, self.map_callback, queue_size = 1)
 		rospy.sleep(0.5)
 
