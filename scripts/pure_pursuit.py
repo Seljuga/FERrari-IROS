@@ -80,7 +80,7 @@ class PurePursuit(object):
 		if (self.modul == 1 and (get_distance(self.robot_x, self.robot_y, self.turning_points[self.cnt], self.turning_points[self.cnt+1]) >= self.circle_of_life[self.count_dooke]) and self.zastavica == 1): 
 			#startna ravnina
 			print ("ciljna ravnina")
-			self.ld = 1.5
+			self.ld = 8.5
 			self.v = 2
 			self.turn = 1
 			self.count_dooke = 0
@@ -101,7 +101,7 @@ class PurePursuit(object):
 		elif ((get_distance(self.robot_x, self.robot_y, self.turning_points[self.cnt], self.turning_points[self.cnt+1]) <= self.circle_of_life[self.count_dooke]) and self.zastavica == 2 and self.turn == 1):
 			#prvi zavoj
 			print ("prvi zavoj v2")
-			self.v = 4
+			self.v = 3.8
 			self.ld = 1.2
 			self.modul = 2
 			self.zastavica = 1
