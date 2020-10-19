@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<launch>
+  
+  <!-- Launch a map from the maps folder-->
+  <arg name="map" default="$(find fer_rari)/maps/vegas_v4.yaml"/>
+  <node pkg="map_server" name="map_server" type="map_server" args="$(arg map)"/>
+
+  <!-- Launch robot model -->
+  <include file="$(find fer_rari)/launch/racecar_model.launch"/>
+
+  <!-- Launch gym bridge node -->
+  <rosparam command="load" file="$(find fer_rari)/config/params.yaml"/>
+  <param name="map_path" value="$(arg map)"/>
+  <node pkg="fer_rari" name="gym_bridge" type="gym_bridge.py" output="screen"/>
+
+</launch>

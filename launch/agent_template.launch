@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<launch>
+
+<arg name="node_start_delay" default="5.0" />
+<arg name="node_start_delay2" default="7.0" />
+<arg name="node_start_delay3" default="6.0" />
+<node pkg="fer_rari" type="virtual_wall.py" name="virtual_wall_node" launch-prefix="bash -c 'sleep $(arg node_start_delay); $0 $@' " output="screen"/>
+<node pkg="fer_rari" type="map_type.py" name="map_type_node" launch-prefix="bash -c 'sleep $(arg node_start_delay2); $0 $@' " output="screen"/>
+
+<node pkg="fer_rari" type="pure_pursuit.py" name="pure_pursuit_node" launch-prefix="bash -c 'sleep $(arg node_start_delay3); $0 $@' " output="screen"/>
+
+<include file="$(find fer_rari)/launch/gym_bridge_host.launch"/>
+<remap from="map" to="map2"/>
+
+
+<!--<node pkg="fer_rari" type="dummy_agent_node.py" name="dummy_agent" output="screen"/>-->
+  <!-- Launch local and global planner -->
+  <arg name="base_global_planner" default="global_planner/GlobalPlanner"/>
+  <arg name="base_local_planner" default="teb_local_planner/TebLocalPlannerROS" />
+  <arg name="recovery_behavior_enabled" default="false" />
+  <arg name="controller_frequency" default="100.0" />
+
+  <!--<arg name="base_local_planner" value="base_local_planner/TrajectoryPlannerROS" />-->
+
+<node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <param name="base_global_planner" value="$(arg base_global_planner)"/>
+    <param name="base_local_planner" value="$(arg base_local_planner)"/>
+    <param name="recovery_behavior_enabled" value="$(arg recovery_behavior_enabled)"/>
+    <param name="GlobalPlanner/use_dijkstra" value="true"/>  
+    <param name="controller_frequency" value = "100.0" />    
+  <rosparam file="$(find fer_rari)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
+  <rosparam file="$(find fer_rari)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
+  <rosparam file="$(find fer_rari)/config/local_costmap_params.yaml" command="load" />
+  <rosparam file="$(find fer_rari)/config/global_costmap_params.yaml" command="load" />
+  <rosparam file="$(find fer_rari)/config/base_local_planner_params.yaml" command="load" />
+</node>
+
+
+<!-- Start GUI for setting initalization parameters. -->
+<!--node pkg="rqt_gui" type="rqt_gui" name="rqt_gui"/-->
+
+  </launch>
