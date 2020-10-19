@@ -193,7 +193,7 @@ class VirtualWall(object):
 
 		 		if (j == 1):
 		 			self.pub.publish(self.map_no_walls)
-		 			rospy.sleep(3)
+		 			rospy.sleep(2)
 		 		# Define and publish goal pose for global planner.
 		 		goal_pub = PoseStamped()
 		 		goal_pub.header.stamp = rospy.Time.now()

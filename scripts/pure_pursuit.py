@@ -250,7 +250,7 @@ class PurePursuit(object):
 
 		elif ((get_distance(self.robot_x, self.robot_y, self.turning_points[self.cnt], self.turning_points[self.cnt+1]) <= self.circle_of_life[self.count_dooke]) and self.zastavica == 0 and self.turn == 8):
 			print "U turn"
-			self.v = 4.5
+			self.v = 5.0
 			self.ld = 1.2
 			self.modul = 9
 			self.zastavica = 1
@@ -295,7 +295,7 @@ class PurePursuit(object):
 
 		elif ((get_distance(self.robot_x, self.robot_y, self.turning_points[self.cnt], self.turning_points[self.cnt+1]) <= self.circle_of_life[self.count_dooke]) and self.zastavica == 2 and self.turn == 10):
 			print "zadnji zavoj"
-			self.v = 6
+			self.v = 5
 			self.ld = 1
 			self.zastavica = 1
 			self.modul = 1
