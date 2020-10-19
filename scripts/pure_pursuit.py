@@ -11,7 +11,6 @@ from geometry_msgs.msg import PoseStamped
 from dynamic_reconfigure.server import Server
 from fer_rari.cfg import RacecarConfig
 from scipy.interpolate import interp1d
-import matplotlib.pyplot as plt
 from std_msgs.msg import Int64
 
 
