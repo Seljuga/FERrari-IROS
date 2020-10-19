@@ -9,7 +9,7 @@
 
 <node pkg="fer_rari" type="pure_pursuit.py" name="pure_pursuit_node" launch-prefix="bash -c 'sleep $(arg node_start_delay3); $0 $@' " output="screen"/>
 
-<include file="$(find fer_rari)/launch/gym_bridge_host.launch"/>
+<!--include file="$(find fer_rari)/launch/gym_bridge_host.launch"/-->
 <remap from="map" to="map2"/>
 
 
