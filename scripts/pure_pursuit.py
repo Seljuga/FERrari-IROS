@@ -332,7 +332,7 @@ class PurePursuit(object):
 
 		self.b4_U_rack_yoself()
 		if self.obstacles == 1 and self.hrv_zastava == 1:
-			self.v = self.v * 0.5
+			self.v = self.v * 0.4
 			self.hrv_zastava = 0
 			print "PREPREKEEE ", self.obstacles
 		
