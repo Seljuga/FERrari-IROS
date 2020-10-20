@@ -187,7 +187,7 @@ class VirtualWall(object):
 		 		if j == 0:
 		 			new_map.header.stamp = rospy.Time.now()
 		 			new_map.data = self.reshape_tuple_map[j]
-		 			rospy.sleep(2)
+		 			rospy.sleep(1.8)
 		 			self.pub.publish(new_map)
 		 			rospy.sleep(2.5)
 

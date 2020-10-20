@@ -130,7 +130,7 @@ class PurePursuit(object):
 		elif (self.modul == 3 and (get_distance(self.robot_x, self.robot_y, self.turning_points[self.cnt], self.turning_points[self.cnt+1]) >= self.circle_of_life[self.count_dooke]) and self.zastavica == 1):
 			print("ravnina nakon drugog zavoja i 3., 4., 5. i 6. zavoj")
 
-			self.v = 7.5
+			self.v = 8.5
 			self.ld = 1.5
 			self.count_dooke += 1
 			self.cnt += 2
@@ -195,7 +195,7 @@ class PurePursuit(object):
 
 		elif (self.modul == 6 and (get_distance(self.robot_x, self.robot_y, self.turning_points[self.cnt], self.turning_points[self.cnt+1]) >= self.circle_of_life[self.count_dooke]) and self.zastavica == 1):
 			print "big boi ravnina"
-			self.v = 9
+			self.v = 9.2
 			self.ld = 1.5
 			self.count_dooke += 1
 			self.cnt += 2
@@ -205,7 +205,7 @@ class PurePursuit(object):
 
 		elif ((get_distance(self.robot_x, self.robot_y, self.turning_points[self.cnt], self.turning_points[self.cnt+1]) <= self.circle_of_life[self.count_dooke]) and self.zastavica == 0 and self.turn == 6):
 			print "zavoj nakon big boi ravnine"
-			self.v = 7
+			self.v = 8
 			self.ld = 1
 			self.modul = 7
 			self.zastavica = 2
@@ -214,7 +214,7 @@ class PurePursuit(object):
 
 		elif ((get_distance(self.robot_x, self.robot_y, self.turning_points[self.cnt], self.turning_points[self.cnt+1]) <= self.circle_of_life[self.count_dooke]) and self.zastavica == 2 and self.turn == 6):
 			print "zavoj nakon big boi ravnine"
-			self.v = 4
+			self.v = 4.8
 			self.ld = 1
 			self.modul = 7
 			self.zastavica = 1
