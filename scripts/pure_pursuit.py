@@ -168,7 +168,7 @@ class PurePursuit(object):
 
 		elif ( self.modul == 5 and (get_distance(self.robot_x, self.robot_y, self.turning_points[self.cnt], self.turning_points[self.cnt+1]) >= self.circle_of_life[self.count_dooke]) and self.zastavica == 1):
 			print "ravnina nakon osmog zavoja"
-			self.v = 9.5
+			self.v = 9.3
 			self.ld = 1.5
 			self.count_dooke += 1
 			self.cnt += 2
@@ -187,7 +187,7 @@ class PurePursuit(object):
 
 		elif ((get_distance(self.robot_x, self.robot_y, self.turning_points[self.cnt], self.turning_points[self.cnt+1]) <= self.circle_of_life[self.count_dooke]) and self.zastavica == 2 and self.turn == 5):
 			print "deveti zavoj (skroz gore U zavoj)"
-			self.v = 4.2
+			self.v = 4.1
 			self.ld = 1
 			self.modul = 6
 			self.zastavica = 1
@@ -195,7 +195,7 @@ class PurePursuit(object):
 
 		elif (self.modul == 6 and (get_distance(self.robot_x, self.robot_y, self.turning_points[self.cnt], self.turning_points[self.cnt+1]) >= self.circle_of_life[self.count_dooke]) and self.zastavica == 1):
 			print "big boi ravnina"
-			self.v = 9.5
+			self.v = 11
 			self.ld = 1.5
 			self.count_dooke += 1
 			self.cnt += 2
@@ -260,7 +260,7 @@ class PurePursuit(object):
 
 		elif (self.modul == 9 and (get_distance(self.robot_x, self.robot_y, self.turning_points[self.cnt], self.turning_points[self.cnt+1]) >= self.circle_of_life[self.count_dooke]) and self.zastavica == 1):
 			print "duga ravnina prije zadnja 2 zavoja"
-			self.v = 8
+			self.v = 8.2
 			self.ld = 1.5
 			self.count_dooke += 1
 			self.cnt += 2
@@ -511,7 +511,7 @@ class PurePursuit(object):
 		self.mode = 0
 		self.cnt = 0
 		self.v = 0
-		self.turning_points = numpy.array([52.77, -26.19, 41.88, -6.27, 78.99, 36.51, 116.73, 53.93, 136.77, 83.20, 44.29, 46.42, 48.31, 29.69, 35.14, 36.88, 11.34, 17.86, -5.48, 7.75, -4.879, 3.991])
+		self.turning_points = numpy.array([52.77, -26.19, 41.88, -6.27, 78.99, 36.51, 116.73, 53.93, 136.77, 83.20, 44.29, 46.42, 48.31, 29.69, 35.14, 36.88, 11.34, 17.86, -5.78, 7.45, -4.879, 3.991])
 		self.obstacles = 0
 		self.modul = 1
 		self.hrv_zastava = 0

@@ -67,9 +67,20 @@ class VirtualWall(object):
 		if i == 1: #not using 2 currently
 			corner1_0 = [self.wall_positions[i][0], self.wall_positions[i][1]+self.length[i]/2]
 			corner2_0 = [self.wall_positions[i][0], self.wall_positions[i][1]-self.length[i]/2]
+			rr2 = 0; cc2 = 0; val2 = 0;
+
 		else:
 			corner1_0 = [self.wall_positions[i][0]+self.length[i]/2, self.wall_positions[i][1]]
 			corner2_0 = [self.wall_positions[i][0]-self.length[i]/2, self.wall_positions[i][1]]
+
+			corner_add1 = [self.wall_positions[i][2] + 3, self.wall_positions[i][3]]
+			corner_add2 = [self.wall_positions[i][2], self.wall_positions[i][3]]
+
+			corner_add1_pix =self.pose_to_pixel(corner_add1[0], corner_add1[1])
+			corner_add2_pix =self.pose_to_pixel(corner_add2[0], corner_add2[1])
+			rr2, cc2, val2 = line_aa(corner_add1_pix[0], corner_add1_pix[1], corner_add2_pix[0], corner_add2_pix[1])
+
+
 
 		self.corner1.append(corner1_0)
 		self.corner2.append(corner2_0)
@@ -84,6 +95,7 @@ class VirtualWall(object):
 		# Add wall to new map.
 		new_map_array = np.array(self.map_data).reshape(self.map_height, self.map_width)
 		new_map_array[cc, rr] = val * 100
+		new_map_array[cc2, rr2] = val2 * 100
 
 		# Make sure every element in new map in integer value.
 		new_map_array_int = []
@@ -138,7 +150,7 @@ class VirtualWall(object):
 		self.flag = 0
 		self.num_laps = 2
 		self.num_of_walls = 2
-		self.wall_positions = [[-0.2, 0.8], [-4.108, 12.078]]# 35.919, 30.911
+		self.wall_positions = [[-0.2, 0.8, 81.103, 59.188], [-4.108, 12.078]]# 35.919, 30.911
 		self.goal_positions = [[-0.5, 1.1], [49.534, -22.666]]#41.355, 10.498 #49,980 -23,081
 
 		self.length = [9.7, 4.3]
