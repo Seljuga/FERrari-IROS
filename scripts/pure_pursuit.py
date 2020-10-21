@@ -136,7 +136,7 @@ class PurePursuit(object):
 			self.cnt += 2
 			self.zastavica = 0
 			self.turn = 3
-			self.hrv_zastava = 1
+			self.hrv_zastava = 3
 			
 
 		elif ((get_distance(self.robot_x, self.robot_y, self.turning_points[self.cnt], self.turning_points[self.cnt+1]) <= self.circle_of_life[self.count_dooke]) and self.zastavica == 0 and self.turn == 3):
@@ -332,11 +332,14 @@ class PurePursuit(object):
 
 		self.b4_U_rack_yoself()
 		if self.obstacles == 1 and self.hrv_zastava == 1:
-			self.v = self.v * 0.4
+			self.v = self.v * 0.5
 			self.hrv_zastava = 0
 			print "PREPREKEEE ", self.obstacles
 		if self.obstacles == 1 and self.hrv_zastava == 2:
-			self.v = self.v * 0.8
+			self.v = self.v * 1
+			self.hrv_zastava = 0
+		if self.obstacles == 1 and self.hrv_zastava == 3:
+			self.v = self.v * 0.5
 			self.hrv_zastava = 0
 		
 

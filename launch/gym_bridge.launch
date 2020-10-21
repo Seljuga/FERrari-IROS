@@ -2,7 +2,7 @@
 <launch>
   
   <!-- Launch a map from the maps folder-->
-  <arg name="map" default="$(find fer_rari)/maps/vegas_v4.yaml"/>
+  <arg name="map" default="$(find fer_rari)/maps/vegas_obs.yaml"/>
   <node pkg="map_server" name="map_server" type="map_server" args="$(arg map)"/>
 
   <!-- Launch robot model -->

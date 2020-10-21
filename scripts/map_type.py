@@ -15,14 +15,14 @@ class MapType(object):
 		for i in range(0, len(self.occupancy)):
 			if (self.occupancy[i] == 100):
 				counter += 1
-				
+		print counter, " <--counter \n"	
 		#if self.flag == 1:
-		if counter >= 5965083:
+		if counter != 5964918:
 			self.slow_down_cowboy = 1
 		#	self.kraj = 1
 		self.type.publish(self.slow_down_cowboy)
 		print "OVDJE SAMM"
-			
+		
 
 #	def odometry_callback(self, data):
 #		i_am_speed = data.twist.twist.linear.x
