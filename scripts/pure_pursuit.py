@@ -79,7 +79,7 @@ class PurePursuit(object):
 			
 		if (self.modul == 1 and (get_distance(self.robot_x, self.robot_y, self.turning_points[self.cnt], self.turning_points[self.cnt+1]) >= self.circle_of_life[self.count_dooke]) and self.zastavica == 1): 
 			#startna ravnina
-			print ("ciljna ravnina")
+			print ("ciljna ravnina\n")
 			self.ld = 1.5
 			self.v = 8
 			self.turn = 1
@@ -110,7 +110,7 @@ class PurePursuit(object):
 		elif (self.modul == 2 and (get_distance(self.robot_x, self.robot_y, self.turning_points[self.cnt], self.turning_points[self.cnt+1]) >= self.circle_of_life[self.count_dooke]) and self.zastavica == 1):
 			#ravnina nakon prvog zavoja
 			print ("ravnina nakon prvog zavoja")
-			self.v = 8
+			self.v = 9
 			self.ld = 1.5
 			self.count_dooke += 1
 			self.turn = 2
@@ -140,7 +140,7 @@ class PurePursuit(object):
 			
 
 		elif ((get_distance(self.robot_x, self.robot_y, self.turning_points[self.cnt], self.turning_points[self.cnt+1]) <= self.circle_of_life[self.count_dooke]) and self.zastavica == 0 and self.turn == 3):
-			print "sedmi zavoj"
+			print "sedmi zavoj\n"
 			self.v = 7.0
 			self.ld = 1
 			self.modul = 4
@@ -160,7 +160,7 @@ class PurePursuit(object):
 
 		elif ((get_distance(self.robot_x, self.robot_y, self.turning_points[self.cnt], self.turning_points[self.cnt+1]) <= self.circle_of_life[self.count_dooke]) and self.zastavica == 0 and self.turn == 4):
 			print "osmi zavoj"
-			self.v = 8.5
+			self.v = 8.7
 			self.ld = 1
 			self.modul = 5
 			self.zastavica = 1
@@ -168,7 +168,7 @@ class PurePursuit(object):
 
 		elif ( self.modul == 5 and (get_distance(self.robot_x, self.robot_y, self.turning_points[self.cnt], self.turning_points[self.cnt+1]) >= self.circle_of_life[self.count_dooke]) and self.zastavica == 1):
 			print "ravnina nakon osmog zavoja"
-			self.v = 8.5
+			self.v = 9.5
 			self.ld = 1.5
 			self.count_dooke += 1
 			self.cnt += 2
@@ -195,26 +195,28 @@ class PurePursuit(object):
 
 		elif (self.modul == 6 and (get_distance(self.robot_x, self.robot_y, self.turning_points[self.cnt], self.turning_points[self.cnt+1]) >= self.circle_of_life[self.count_dooke]) and self.zastavica == 1):
 			print "big boi ravnina"
-			self.v = 9.2
+			self.v = 9.5
 			self.ld = 1.5
 			self.count_dooke += 1
 			self.cnt += 2
 			self.zastavica = 0
 			self.turn = 6
 			self.hrv_zastava = 1
+			self.billy = 1
 
 		elif ((get_distance(self.robot_x, self.robot_y, self.turning_points[self.cnt], self.turning_points[self.cnt+1]) <= self.circle_of_life[self.count_dooke]) and self.zastavica == 0 and self.turn == 6):
-			print "zavoj nakon big boi ravnine"
+			print "zavoj nakon big boi ravnine\n"
 			self.v = 8
 			self.ld = 1
 			self.modul = 7
 			self.zastavica = 2
 			self.count_dooke += 1
 			self.hrv_zastava = 2
+			self.billy = 0
 
 		elif ((get_distance(self.robot_x, self.robot_y, self.turning_points[self.cnt], self.turning_points[self.cnt+1]) <= self.circle_of_life[self.count_dooke]) and self.zastavica == 2 and self.turn == 6):
 			print "zavoj nakon big boi ravnine"
-			self.v = 4.8
+			self.v = 5
 			self.ld = 1
 			self.modul = 7
 			self.zastavica = 1
@@ -323,7 +325,7 @@ class PurePursuit(object):
 		# angle = angle*180.0/math.pi
 		
 
-		# self.check_yourself()
+		# self.check_yourself()prije
 		
 		# if (self.mode % 2) == 1:
 		# 	self.v = 3.7
@@ -341,6 +343,7 @@ class PurePursuit(object):
 		if self.obstacles == 1 and self.hrv_zastava == 3:
 			self.v = self.v * 0.5
 			self.hrv_zastava = 0
+
 		
 
 		
@@ -423,6 +426,13 @@ class PurePursuit(object):
 		alpha2 = rpy[2]
 		alpha = alpha1-alpha2
 		self.delta = math.atan((2*L*math.sin(alpha))/ld)
+
+
+		# if self.billy == 1 and self.modul == 6:
+		# 	if self.delta >= 0.001:
+		# 		self.delta = 0.001
+		# 	elif self.delta <= -0.001:
+		# 		self.delta = -0.001
 		
 		# publish speed and steering angle of the robot
 		whereto = AckermannDriveStamped()
@@ -494,7 +504,7 @@ class PurePursuit(object):
 
 	def __init__(self):
 		"""Create subscribers, publishers and servers."""
-		self.circle_of_life = numpy.array([8, 5.6, 3.5, 5.5, 4.0, 6.8, 5.2, 5.3, 3.5, 3.5, 3.5, 3.6, 4.0, 4.0])
+		self.circle_of_life = numpy.array([8, 5.6, 3.5, 5.5, 4.0, 6.8, 5.2, 5.3, 3.8, 3.5, 3.5, 3.6, 4.0, 4.0])
 		self.count_dooke = 0
 		self.flag = 0
 		self.zastavica = 1
@@ -505,14 +515,15 @@ class PurePursuit(object):
 		self.obstacles = 0
 		self.modul = 1
 		self.hrv_zastava = 0
+		self.billy = 0
 
 
 		srv = Server(RacecarConfig, self.config_callback)
-		rospy.Subscriber("fer_rari/odom", Odometry, self.odometry_callback, queue_size = 1)
+		rospy.Subscriber("/fer_rari/odom", Odometry, self.odometry_callback, queue_size = 1)
 		rospy.Subscriber("/cmd_vel", Twist, self.cmd_callback, queue_size = 1)
 		rospy.Subscriber("/map_type", Int64, self.maptype_callback, queue_size = 1)
 		rospy.Subscriber("/move_base/TebLocalPlannerROS/local_plan", Path, self.planner_callback, queue_size = 1)
-		self.pub = rospy.Publisher("fer_rari/drive", AckermannDriveStamped, queue_size = 1)
+		self.pub = rospy.Publisher("/fer_rari/drive", AckermannDriveStamped, queue_size = 1)
 		rospy.sleep(0.5) 
 		self.pub2 = rospy.Publisher("/pure_pursit_goal", PointStamped, queue_size = 1)
 		self.transf = tf.TransformListener()
