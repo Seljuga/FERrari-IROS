@@ -160,7 +160,7 @@ class PurePursuit(object):
 
 		elif ((get_distance(self.robot_x, self.robot_y, self.turning_points[self.cnt], self.turning_points[self.cnt+1]) <= self.circle_of_life[self.count_dooke]) and self.zastavica == 0 and self.turn == 4):
 			print "osmi zavoj"
-			self.v = 8.7
+			self.v = 8.5
 			self.ld = 1
 			self.modul = 5
 			self.zastavica = 1
@@ -168,7 +168,7 @@ class PurePursuit(object):
 
 		elif ( self.modul == 5 and (get_distance(self.robot_x, self.robot_y, self.turning_points[self.cnt], self.turning_points[self.cnt+1]) >= self.circle_of_life[self.count_dooke]) and self.zastavica == 1):
 			print "ravnina nakon osmog zavoja"
-			self.v = 9.3
+			self.v = 9.1
 			self.ld = 1.5
 			self.count_dooke += 1
 			self.cnt += 2
@@ -195,27 +195,70 @@ class PurePursuit(object):
 
 		elif (self.modul == 6 and (get_distance(self.robot_x, self.robot_y, self.turning_points[self.cnt], self.turning_points[self.cnt+1]) >= self.circle_of_life[self.count_dooke]) and self.zastavica == 1):
 			print "big boi ravnina"
-			self.v = 11
+			self.v = 15
 			self.ld = 1.5
 			self.count_dooke += 1
 			self.cnt += 2
 			self.zastavica = 0
 			self.turn = 6
-			self.hrv_zastava = 1
-			self.billy = 1
+			self.hrv_zastava = 4
 
 		elif ((get_distance(self.robot_x, self.robot_y, self.turning_points[self.cnt], self.turning_points[self.cnt+1]) <= self.circle_of_life[self.count_dooke]) and self.zastavica == 0 and self.turn == 6):
-			print "zavoj nakon big boi ravnine\n"
-			self.v = 8
+			print "zavoj nakon big boi ravnine 1"
+			self.v = 13.5
 			self.ld = 1
-			self.modul = 7
+			#self.modul = 7
 			self.zastavica = 2
 			self.count_dooke += 1
-			self.hrv_zastava = 2
-			self.billy = 0
+			self.hrv_zastava = 4
 
 		elif ((get_distance(self.robot_x, self.robot_y, self.turning_points[self.cnt], self.turning_points[self.cnt+1]) <= self.circle_of_life[self.count_dooke]) and self.zastavica == 2 and self.turn == 6):
-			print "zavoj nakon big boi ravnine"
+			print "zavoj nakon big boi ravnine 2"
+			self.v = 12
+			self.ld = 1
+			#self.modul = 7
+			self.zastavica = 3
+			self.count_dooke += 1
+			self.hrv_zastava = 4
+
+		elif ((get_distance(self.robot_x, self.robot_y, self.turning_points[self.cnt], self.turning_points[self.cnt+1]) <= self.circle_of_life[self.count_dooke]) and self.zastavica == 3 and self.turn == 6):
+			print "zavoj nakon big boi ravnine 3"
+			self.v = 10.5
+			self.ld = 1
+			#self.modul = 7
+			self.zastavica = 6
+			self.count_dooke += 1
+			self.hrv_zastava = 4
+
+		elif ((get_distance(self.robot_x, self.robot_y, self.turning_points[self.cnt], self.turning_points[self.cnt+1]) <= self.circle_of_life[self.count_dooke]) and self.zastavica == 6 and self.turn == 6):
+			print "zavoj nakon big boi ravnine 4"
+			self.v = 9
+			self.ld = 1
+			#self.modul = 7
+			self.zastavica = 4
+			self.count_dooke += 1
+			self.hrv_zastava = 4
+
+		elif ((get_distance(self.robot_x, self.robot_y, self.turning_points[self.cnt], self.turning_points[self.cnt+1]) <= self.circle_of_life[self.count_dooke]) and self.zastavica == 4 and self.turn == 6):
+			print "zavoj nakon big boi ravnine 5"
+			self.v = 7.5
+			self.ld = 1
+			#self.modul = 7
+			self.zastavica = 7
+			self.count_dooke += 1
+			self.hrv_zastava = 4
+
+		elif ((get_distance(self.robot_x, self.robot_y, self.turning_points[self.cnt], self.turning_points[self.cnt+1]) <= self.circle_of_life[self.count_dooke]) and self.zastavica == 7 and self.turn == 6):
+			print "zavoj nakon big boi ravnine 5"
+			self.v = 6.4
+			self.ld = 1
+			#self.modul = 7
+			self.zastavica = 5
+			self.count_dooke += 1
+			self.hrv_zastava = 4
+
+		elif ((get_distance(self.robot_x, self.robot_y, self.turning_points[self.cnt], self.turning_points[self.cnt+1]) <= self.circle_of_life[self.count_dooke]) and self.zastavica == 5 and self.turn == 6):
+			print "zavoj nakon big boi ravnine 6"
 			self.v = 5
 			self.ld = 1
 			self.modul = 7
@@ -342,6 +385,9 @@ class PurePursuit(object):
 			self.hrv_zastava = 0
 		if self.obstacles == 1 and self.hrv_zastava == 3:
 			self.v = self.v * 0.5
+			self.hrv_zastava = 0
+		if self.obstacles == 1 and self.hrv_zastava == 4:
+			self.v = 4.0
 			self.hrv_zastava = 0
 
 		
@@ -504,7 +550,7 @@ class PurePursuit(object):
 
 	def __init__(self):
 		"""Create subscribers, publishers and servers."""
-		self.circle_of_life = numpy.array([8, 5.6, 3.5, 5.5, 4.0, 6.8, 5.2, 5.3, 3.8, 3.5, 3.5, 3.6, 4.0, 4.0])
+		self.circle_of_life = numpy.array([8, 5.6, 3.5, 5.5, 4.0, 6.8, 5.2, 50, 35, 23, 15.7, 8.8, 5.5, 3.8, 3.5, 3.5, 3.6, 4.0, 4.0])
 		self.count_dooke = 0
 		self.flag = 0
 		self.zastavica = 1

@@ -67,7 +67,10 @@ class VirtualWall(object):
 		if i == 1: #not using 2 currently
 			corner1_0 = [self.wall_positions[i][0], self.wall_positions[i][1]+self.length[i]/2]
 			corner2_0 = [self.wall_positions[i][0], self.wall_positions[i][1]-self.length[i]/2]
-			rr2 = 0; cc2 = 0; val2 = 0;
+			rr2 = 0; cc2 = 0; val2 = 0; rr3 = 0; cc3 = 0; val3 = 0;
+			rr4 = 0; cc4 = 0; val4 = 0; rr5 = 0; cc5 = 0; val5 = 0;
+			rr6 = 0; cc6 = 0; val6 = 0;
+			rr7 = 0; cc7 = 0; val7 = 0; rr8 = 0; cc8 = 0; val8 = 0;
 
 		else:
 			corner1_0 = [self.wall_positions[i][0]+self.length[i]/2, self.wall_positions[i][1]]
@@ -75,10 +78,45 @@ class VirtualWall(object):
 
 			corner_add1 = [self.wall_positions[i][2] + 3, self.wall_positions[i][3]]
 			corner_add2 = [self.wall_positions[i][2], self.wall_positions[i][3]]
-
 			corner_add1_pix =self.pose_to_pixel(corner_add1[0], corner_add1[1])
 			corner_add2_pix =self.pose_to_pixel(corner_add2[0], corner_add2[1])
 			rr2, cc2, val2 = line_aa(corner_add1_pix[0], corner_add1_pix[1], corner_add2_pix[0], corner_add2_pix[1])
+
+			corner_add11 = [self.wall_positions[i][4], self.wall_positions[i][5]-1]
+			corner_add22 = [self.wall_positions[i][4], self.wall_positions[i][5]]
+			corner_add11_pix =self.pose_to_pixel(corner_add11[0], corner_add11[1])
+			corner_add22_pix =self.pose_to_pixel(corner_add22[0], corner_add22[1])
+			rr3, cc3, val3 = line_aa(corner_add11_pix[0], corner_add11_pix[1], corner_add22_pix[0], corner_add22_pix[1])
+
+			corner_add111 = [self.wall_positions[i][6]+3, self.wall_positions[i][7]]
+			corner_add222 = [self.wall_positions[i][6], self.wall_positions[i][7]]
+			corner_add111_pix =self.pose_to_pixel(corner_add111[0], corner_add111[1])
+			corner_add222_pix =self.pose_to_pixel(corner_add222[0], corner_add222[1])
+			rr4, cc4, val4 = line_aa(corner_add111_pix[0], corner_add111_pix[1], corner_add222_pix[0], corner_add222_pix[1])
+
+			corner_add1111 = [self.wall_positions[i][8]+3, self.wall_positions[i][9]]
+			corner_add2222 = [self.wall_positions[i][8], self.wall_positions[i][9]]
+			corner_add1111_pix =self.pose_to_pixel(corner_add1111[0], corner_add1111[1])
+			corner_add2222_pix =self.pose_to_pixel(corner_add2222[0], corner_add2222[1])
+			rr5, cc5, val5 = line_aa(corner_add1111_pix[0], corner_add1111_pix[1], corner_add2222_pix[0], corner_add2222_pix[1])
+
+			corner_add11111 = [self.wall_positions[i][10]+3, self.wall_positions[i][11]]
+			corner_add22222 = [self.wall_positions[i][10], self.wall_positions[i][11]]
+			corner_add11111_pix =self.pose_to_pixel(corner_add11111[0], corner_add11111[1])
+			corner_add22222_pix =self.pose_to_pixel(corner_add22222[0], corner_add22222[1])
+			rr6, cc6, val6 = line_aa(corner_add11111_pix[0], corner_add11111_pix[1], corner_add22222_pix[0], corner_add22222_pix[1])
+
+			corner_add3 = [self.wall_positions[i][12]+3, self.wall_positions[i][13]]
+			corner_add4 = [self.wall_positions[i][12], self.wall_positions[i][13]]
+			corner_add3_pix =self.pose_to_pixel(corner_add3[0], corner_add3[1])
+			corner_add4_pix =self.pose_to_pixel(corner_add4[0], corner_add4[1])
+			rr7, cc7, val7 = line_aa(corner_add3_pix[0], corner_add3_pix[1], corner_add4_pix[0], corner_add4_pix[1])
+
+			corner_add5 = [self.wall_positions[i][14]+3, self.wall_positions[i][15]]
+			corner_add6 = [self.wall_positions[i][14], self.wall_positions[i][15]]
+			corner_add5_pix =self.pose_to_pixel(corner_add5[0], corner_add5[1])
+			corner_add6_pix =self.pose_to_pixel(corner_add6[0], corner_add6[1])
+			rr8, cc8, val8 = line_aa(corner_add5_pix[0], corner_add5_pix[1], corner_add6_pix[0], corner_add6_pix[1])
 
 
 
@@ -96,6 +134,12 @@ class VirtualWall(object):
 		new_map_array = np.array(self.map_data).reshape(self.map_height, self.map_width)
 		new_map_array[cc, rr] = val * 100
 		new_map_array[cc2, rr2] = val2 * 100
+		new_map_array[cc3, rr3] = val3 * 100
+		new_map_array[cc4, rr4] = val4 * 100
+		new_map_array[cc5, rr5] = val5 * 100
+		new_map_array[cc6, rr6] = val6 * 100
+		new_map_array[cc7, rr7] = val7 * 100
+		new_map_array[cc8, rr8] = val8 * 100
 
 		# Make sure every element in new map in integer value.
 		new_map_array_int = []
@@ -150,7 +194,7 @@ class VirtualWall(object):
 		self.flag = 0
 		self.num_laps = 2
 		self.num_of_walls = 2
-		self.wall_positions = [[-0.2, 0.8, 81.103, 59.188], [-4.108, 12.078]]# 35.919, 30.911
+		self.wall_positions = [[-0.2, 0.8, 81.103, 59.188, 48.2, -22.0, 107.824, 71.227, 63.271, 53.450, 117.350, 76.227, 96.063, 66.165, 51.360, 49.805], [-4.108, 12.078]]# 35.919, 30.911
 		self.goal_positions = [[-0.5, 1.1], [49.534, -22.666]]#41.355, 10.498 #49,980 -23,081
 
 		self.length = [9.7, 4.3]
