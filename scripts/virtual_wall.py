@@ -69,14 +69,16 @@ class VirtualWall(object):
 			corner2_0 = [self.wall_positions[i][0], self.wall_positions[i][1]-self.length[i]/2]
 			rr2 = 0; cc2 = 0; val2 = 0; rr3 = 0; cc3 = 0; val3 = 0;
 			rr4 = 0; cc4 = 0; val4 = 0; rr5 = 0; cc5 = 0; val5 = 0;
-			rr6 = 0; cc6 = 0; val6 = 0;
+			rr6 = 0; cc6 = 0; val6 = 0; rr9 = 0; cc9 = 0; val9 = 0;
 			rr7 = 0; cc7 = 0; val7 = 0; rr8 = 0; cc8 = 0; val8 = 0;
+			rr10 = 0; cc10 = 0; val10 = 0; rr11 = 0; cc11 = 0; val11 = 0;
+			rr12 = 0; cc12 = 0; val12 = 0; rr13 = 0; cc13 = 0; val13 = 0;
 
 		else:
 			corner1_0 = [self.wall_positions[i][0]+self.length[i]/2, self.wall_positions[i][1]]
 			corner2_0 = [self.wall_positions[i][0]-self.length[i]/2, self.wall_positions[i][1]]
 
-			corner_add1 = [self.wall_positions[i][2] + 3, self.wall_positions[i][3]]
+			corner_add1 = [self.wall_positions[i][2]+4.0, self.wall_positions[i][3]]
 			corner_add2 = [self.wall_positions[i][2], self.wall_positions[i][3]]
 			corner_add1_pix =self.pose_to_pixel(corner_add1[0], corner_add1[1])
 			corner_add2_pix =self.pose_to_pixel(corner_add2[0], corner_add2[1])
@@ -88,35 +90,65 @@ class VirtualWall(object):
 			corner_add22_pix =self.pose_to_pixel(corner_add22[0], corner_add22[1])
 			rr3, cc3, val3 = line_aa(corner_add11_pix[0], corner_add11_pix[1], corner_add22_pix[0], corner_add22_pix[1])
 
-			corner_add111 = [self.wall_positions[i][6]+3, self.wall_positions[i][7]]
+			corner_add111 = [self.wall_positions[i][6]+4.5, self.wall_positions[i][7]]
 			corner_add222 = [self.wall_positions[i][6], self.wall_positions[i][7]]
 			corner_add111_pix =self.pose_to_pixel(corner_add111[0], corner_add111[1])
 			corner_add222_pix =self.pose_to_pixel(corner_add222[0], corner_add222[1])
 			rr4, cc4, val4 = line_aa(corner_add111_pix[0], corner_add111_pix[1], corner_add222_pix[0], corner_add222_pix[1])
 
-			corner_add1111 = [self.wall_positions[i][8]+3, self.wall_positions[i][9]]
+			corner_add1111 = [self.wall_positions[i][8]+4.5, self.wall_positions[i][9]]
 			corner_add2222 = [self.wall_positions[i][8], self.wall_positions[i][9]]
 			corner_add1111_pix =self.pose_to_pixel(corner_add1111[0], corner_add1111[1])
 			corner_add2222_pix =self.pose_to_pixel(corner_add2222[0], corner_add2222[1])
 			rr5, cc5, val5 = line_aa(corner_add1111_pix[0], corner_add1111_pix[1], corner_add2222_pix[0], corner_add2222_pix[1])
 
-			corner_add11111 = [self.wall_positions[i][10]+3, self.wall_positions[i][11]]
+			corner_add11111 = [self.wall_positions[i][10]+4.5, self.wall_positions[i][11]]
 			corner_add22222 = [self.wall_positions[i][10], self.wall_positions[i][11]]
 			corner_add11111_pix =self.pose_to_pixel(corner_add11111[0], corner_add11111[1])
 			corner_add22222_pix =self.pose_to_pixel(corner_add22222[0], corner_add22222[1])
 			rr6, cc6, val6 = line_aa(corner_add11111_pix[0], corner_add11111_pix[1], corner_add22222_pix[0], corner_add22222_pix[1])
 
-			corner_add3 = [self.wall_positions[i][12]+3, self.wall_positions[i][13]]
+			corner_add3 = [self.wall_positions[i][12]+4.0, self.wall_positions[i][13]]
 			corner_add4 = [self.wall_positions[i][12], self.wall_positions[i][13]]
 			corner_add3_pix =self.pose_to_pixel(corner_add3[0], corner_add3[1])
 			corner_add4_pix =self.pose_to_pixel(corner_add4[0], corner_add4[1])
 			rr7, cc7, val7 = line_aa(corner_add3_pix[0], corner_add3_pix[1], corner_add4_pix[0], corner_add4_pix[1])
 
-			corner_add5 = [self.wall_positions[i][14]+3, self.wall_positions[i][15]]
+			corner_add5 = [self.wall_positions[i][14]+4.0, self.wall_positions[i][15]]
 			corner_add6 = [self.wall_positions[i][14], self.wall_positions[i][15]]
 			corner_add5_pix =self.pose_to_pixel(corner_add5[0], corner_add5[1])
 			corner_add6_pix =self.pose_to_pixel(corner_add6[0], corner_add6[1])
 			rr8, cc8, val8 = line_aa(corner_add5_pix[0], corner_add5_pix[1], corner_add6_pix[0], corner_add6_pix[1])
+
+			corner_add7 = [self.wall_positions[i][16], self.wall_positions[i][17]-1.5]
+			corner_add8 = [self.wall_positions[i][16], self.wall_positions[i][17]]
+			corner_add7_pix =self.pose_to_pixel(corner_add7[0], corner_add7[1])
+			corner_add8_pix =self.pose_to_pixel(corner_add8[0], corner_add8[1])
+			rr9, cc9, val9 = line_aa(corner_add7_pix[0], corner_add7_pix[1], corner_add8_pix[0], corner_add8_pix[1])
+
+			corner_add9 = [self.wall_positions[i][18]+4.5, self.wall_positions[i][19]]
+			corner_add10 = [self.wall_positions[i][18], self.wall_positions[i][19]]
+			corner_add9_pix =self.pose_to_pixel(corner_add9[0], corner_add9[1])
+			corner_add10_pix =self.pose_to_pixel(corner_add10[0], corner_add10[1])
+			rr10, cc10, val10 = line_aa(corner_add9_pix[0], corner_add9_pix[1], corner_add10_pix[0], corner_add10_pix[1])
+
+			corner_add13 = [self.wall_positions[i][20]+4.5, self.wall_positions[i][21]]
+			corner_add14 = [self.wall_positions[i][20], self.wall_positions[i][21]]
+			corner_add13_pix =self.pose_to_pixel(corner_add13[0], corner_add13[1])
+			corner_add14_pix =self.pose_to_pixel(corner_add14[0], corner_add14[1])
+			rr11, cc11, val11 = line_aa(corner_add13_pix[0], corner_add13_pix[1], corner_add14_pix[0], corner_add14_pix[1])
+
+			corner_add15 = [self.wall_positions[i][22]+4.5, self.wall_positions[i][23]]
+			corner_add16 = [self.wall_positions[i][22], self.wall_positions[i][23]]
+			corner_add15_pix =self.pose_to_pixel(corner_add15[0], corner_add15[1])
+			corner_add16_pix =self.pose_to_pixel(corner_add16[0], corner_add16[1])
+			rr12, cc12, val12 = line_aa(corner_add15_pix[0], corner_add15_pix[1], corner_add16_pix[0], corner_add16_pix[1])
+
+			corner_add17 = [self.wall_positions[i][24]+4.5, self.wall_positions[i][25]]
+			corner_add18 = [self.wall_positions[i][24], self.wall_positions[i][25]]
+			corner_add17_pix =self.pose_to_pixel(corner_add17[0], corner_add17[1])
+			corner_add18_pix =self.pose_to_pixel(corner_add18[0], corner_add18[1])
+			rr13, cc13, val13 = line_aa(corner_add17_pix[0], corner_add17_pix[1], corner_add18_pix[0], corner_add18_pix[1])
 
 
 
@@ -140,6 +172,14 @@ class VirtualWall(object):
 		new_map_array[cc6, rr6] = val6 * 100
 		new_map_array[cc7, rr7] = val7 * 100
 		new_map_array[cc8, rr8] = val8 * 100
+		new_map_array[cc9, rr9] = val9 * 100
+		new_map_array[cc10, rr10] = val10* 100
+		new_map_array[cc11, rr11] = val11* 100
+		new_map_array[cc12, rr12] = val12* 100
+		new_map_array[cc13, rr13] = val13* 100
+
+
+
 
 		# Make sure every element in new map in integer value.
 		new_map_array_int = []
@@ -194,7 +234,7 @@ class VirtualWall(object):
 		self.flag = 0
 		self.num_laps = 2
 		self.num_of_walls = 2
-		self.wall_positions = [[-0.2, 0.8, 81.103, 59.188, 48.2, -22.0, 107.824, 71.227, 63.271, 53.450, 117.350, 76.227, 96.063, 66.165, 51.360, 49.805], [-4.108, 12.078]]# 35.919, 30.911
+		self.wall_positions = [[-0.2, 0.8, 81.0, 59.188, 48.2, -22.0, 107.824, 71.227, 64.6, 53.450, 117.350, 76.227, 94.9, 65.1, 57.299, 51.227, 45.479, -20.979, 86.475, 61.674, 101.674, 68.542, 73.955,  56.772, 47.516, 48.412], [-4.108, 12.078]]# 35.919, 30.911
 		self.goal_positions = [[-0.5, 1.1], [49.534, -22.666]]#41.355, 10.498 #49,980 -23,081
 
 		self.length = [9.7, 4.3]
